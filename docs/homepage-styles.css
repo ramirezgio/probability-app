@@ -1,22 +1,54 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: white;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Top Bar Styling */
+.top-bar {
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.top-left .app-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.top-center {
+    font-size: 16px;
+    color: white;
+    font-style: italic; /* Italicized text */
+}
+
+.top-right .disabled-button {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #aac7f6;
+    color: #555;
+    border-radius: 5px;
+    border: none;
+    cursor: not-allowed;
+    margin-left: 5px;
 }
 
 .container {
-    margin-top: 100px;
-}
-
-h1 {
-    color: #333;
-}
-
-p {
-    font-size: 18px;
-    color: #666;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 20px;
 }
 
 .button-container {
@@ -37,4 +69,22 @@ p {
 
 .button:hover {
     background-color: #0056b3;
+}
+
+/* Trending Events Section - Right Side */
+.trending-events {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 20%;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.under-construction {
+    font-style: italic;
+    color: #999;
 }
