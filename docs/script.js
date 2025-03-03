@@ -165,5 +165,59 @@ async function initializeDisplay() {
         });
 }
 
+function isFirebaseReady() {
+    return typeof database !== "undefined"; // Checks if Firebase is loaded
+}
+
+function calculateTotalWagered() {
+    if (!isFirebaseReady()) {
+        console.error("Firebase is not initialized yet.");
+        return;
+    }
+
+    const dbRef = ref(database, 'events'); // Reference to all events in Firebase
+    get(dbRef)
+        .then((snapshot) => {
+            let totalWagered = 0;
+
+            if (snapshot.exists()) {
+                console.log("Events found in Firebase:");
+                snapshot.forEach((childSnapshot) => {
+                    const eventData = childSnapshot.val();
+                    console.log("Event Data:", eventData); // Debugging log
+
+                    let wagerValue = eventData.wager ? parseFloat(eventData.wager) : 0;
+                    totalWagered += wagerValue;
+                });
+            } else {
+                console.log("No events found in Firebase.");
+            }
+
+            // Update the homepage's total wagered section
+            const totalWagerElement = document.getElementById("total-wager");
+            if (totalWagerElement) {
+                totalWagerElement.textContent = totalWagered > 0 ? `$${totalWagered}` : "TBD";
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching total wagered:", error);
+        });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM fully loaded");
+
+    // Wait a bit before running total wager function
+    setTimeout(() => {
+        console.log("Checking Firebase readiness...");
+        if (isFirebaseReady()) {
+            calculateTotalWagered();
+        } else {
+            console.warn("Skipping calculateTotalWagered: Firebase not ready.");
+        }
+    }, 500); // Delay to ensure Firebase loads
+});
+
+
 // Call initializeDisplay when the page loads to display existing events
 window.onload = initializeDisplay;

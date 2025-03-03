@@ -3,7 +3,7 @@
 <head>
 
     <script>
-        window.history.replaceState({}, "", "home");
+        //window.history.replaceState({}, "", "home");
     </script>    
 
     <meta charset="UTF-8">
@@ -22,9 +22,12 @@
     </header>
     
     <div class="main-container">
-        <section class="left-section">
+        
+        <section class="left-section total-wager-card">
             <h2>Total Wagered</h2>
-        </section>
+            <p id="total-wager" class="wager-amount">TBD</p>
+        </section>        
+
         <section class="middle-section">
             <h2>Markets</h2>
             <div class="button-container">
@@ -36,5 +39,6 @@
             <h2>Trending Events</h2>
         </section>
     </div>
+<script type="module" src="script.js"></script>
 </body>
 </html>
