@@ -31,7 +31,7 @@ body {
 .top-center {
     font-size: 16px;
     color: white;
-    font-style: italic; /* Italicized text */
+    font-style: italic;
 }
 
 .top-right .disabled-button {
@@ -45,10 +45,33 @@ body {
     margin-left: 5px;
 }
 
-.container {
+/* Main Content Layout */
+.main-container {
+    display: flex;
     width: 80%;
     max-width: 1000px;
-    margin-top: 20px;
+    flex-grow: 1;
+    min-height: calc(100vh - 50px); /* Makes it extend from the top bar down */
+}
+
+/* Styling for Each Section */
+.left-section, .middle-section, .right-section {
+    flex: 1;
+    padding: 20px;
+    border-right: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ensures content starts from the top */
+}
+
+.right-section {
+    border-right: none;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
 }
 
 .button-container {
@@ -69,19 +92,6 @@ body {
 
 .button:hover {
     background-color: #0056b3;
-}
-
-/* Trending Events Section - Right Side */
-.trending-events {
-    position: absolute;
-    top: 100px;
-    right: 20px;
-    width: 20%;
-    padding: 15px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: left;
 }
 
 .under-construction {
