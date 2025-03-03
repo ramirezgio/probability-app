@@ -150,8 +150,8 @@ async function initializeDisplay() {
                             <input type="number" id="probability-${eventData.name}" placeholder="Probability (%)">
                             <input type="number" id="wager-${eventData.name}" placeholder="Wager ($)">
                             <button onclick="updateEvent('${eventData.name}')">Add Probability and Wager</button>
-                            <p>Total Wager: $${eventData.wager !== null ? eventData.wager : 'N/A'}</p>
-                            <p>Overall Probability: ${eventData.overallProbability !== null ? (eventData.overallProbability) + '%' : 'N/A'}</p>
+                            <p>Total Wager: ${eventData.wager ? `$${eventData.wager}` : 'TBD'}</p>
+                            <p>Probability: ${!eventData.overallProbability && eventData.overallProbability !== 0 ? 'TBD' : Math.round(eventData.overallProbability) + '%'}</p>
                             <button onclick="deleteEvent('${eventName}')">Delete Event</button>
                         </div>
                     `;
